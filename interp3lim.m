@@ -1,4 +1,18 @@
 function mout = interp3lim(x, M, y)
+%INTERP3LIM cubic lagrange imterpolation with a flux limiter
+%
+% INTERP3LIM(x, M, y) uses interp1cubicL then uses a flux limiter such that
+% the interpolant is piecewise monotonic.
+%
+% Example: As in the interp1cubicL example, we can compare the two
+% functions (interp1cubicL blue dashed, interp3lim red solid) with
+%
+%     X = (0:6);
+%     M = sin(X);
+%     y = 0:0.1:6;
+%     plot(y,interp1cubicL(X,M,y),'b--', y,interp3lim(X,M,y),'r-', X,M,'b+')
+%
+% See also: INTERP1CUBICL PPVAL_LIM PCHIP
 
 % How to treat extrapolation?
 % Now evaluate the y's where they're supposed to be!

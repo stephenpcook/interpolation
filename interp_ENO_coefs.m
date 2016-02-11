@@ -1,5 +1,5 @@
 function pp_coefs = interp_ENO_coefs(F,X,i_start)
-% Calculates the cubic lagrange ENO interpolating function coefficients
+%INTERP_ENO_COEFS Calculates the cubic ENO interpolant coefficients
 %
 % For the interval [X(i_start), X(i_start + 1)], this finds the escentially
 % non-oscillatory cubic (ENO) lagrange interpolating function for F defined
@@ -26,14 +26,17 @@ function pp_coefs = interp_ENO_coefs(F,X,i_start)
 %   third_diff
 %   poly_coefs
 %
-% Stephen Cook 14/05/2015
-% 
+%
 % References
-%   [HartenEtAl86] A. Harten, S. Osher, B. Engquist, and S.R. Chakravarthy. 
+%   [HartenEtAl86] A. Harten, S. Osher, B. Engquist, and S.R. Chakravarthy.
 %           Some results on uniformly high order accurate  essentially
 %           non-oscillatory schemes. Applied. Num. Math., 2:347-377, 1986.
-%   [Smith00] C.J. Smith, The semi-Lagrangian method in atmospheric 
+%   [Smith00] C.J. Smith, The semi-Lagrangian method in atmospheric
 %           modelling, Ph.D. thesis, University of Reading, 2000.
+%
+% See also: INTERP_ENO
+
+% Stephen Cook 14/05/2015
 
 %%%%%%%%%%%%%%%%%%%%%
 % Main body of code %
