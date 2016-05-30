@@ -42,16 +42,19 @@ function D = quadratic_gradients(X,V)
 %QUADRATIC_GRADIENTS Quadratic derivative esimates
 %
 % D = QUADRATIC_GRADIENTS(X,V) estimates the gradient of v(x) at x_i with a
-% three point stencil. Reduces to a linear estimate at the boundaries.
+% three point stencil.
 %
 % See also: AKIMA_GRADIENTS HYMAN_GRADIENTS
 
 N = length(X);
 
 Dx = diff(X);
+S = diff(V)./Dx;
 
-d(1) = (V(2)-V(1))/Dx(1);
-d(N) = (V(end) - V(end-1))/Dx(N-1);
+d(1) = ((2*Dx(1) + Dx(2))*S(1) - Dx(1)*S(2)) ...
+         /(Dx(1)+Dx(2));
+d(N) = ((2*Dx(N-1) + Dx(N-2))*S(N-1) - Dx(N-1)*S(N-2)) ...
+             /(Dx(N-2)+Dx(N-1));
 for ii = 2:N-1
   d(ii) = ( -Dx(ii)^2*V(ii-1) + (Dx(ii)^2-Dx(ii-1)^2)*V(ii) ...
             + Dx(ii-1)^2*V(ii+1)) ...
